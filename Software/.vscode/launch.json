@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Odoo 18",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "${workspaceFolder}/.venv312/bin/python",
+            "program": "${workspaceFolder}/odoo-18.0/odoo-bin",
+            "args": [
+                "-c",
+                "${workspaceFolder}/odoo.conf"
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/odoo-18.0"
+            },
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        }
+    ]
+}

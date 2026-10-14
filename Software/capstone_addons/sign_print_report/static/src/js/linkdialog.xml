@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="sign_print_report.LinkDialog" id="LinkDialog">
+        <Dialog size="'md'" title="'Download Signed Document'">
+            <div class="container-fluid">
+                <div class="form-group mb0" id="select_report">
+                    <div class="col-sm-12" t-ref="link">
+
+                    </div>
+                </div>
+            </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-secondary" t-on-click="props.close">Cancel</button>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>

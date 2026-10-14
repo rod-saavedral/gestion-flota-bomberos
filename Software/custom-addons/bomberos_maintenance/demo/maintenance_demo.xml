@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="maintenance_demo_preventive" model="bomberos.maintenance.order">
+        <field name="name">DEMO-MT-00001</field>
+        <field name="maintenance_type">preventive</field>
+        <field name="vehicle_id" ref="bomberos_fleet.vehicle_demo_01"/>
+        <field name="state">scheduled</field>
+        <field name="scheduled_date" eval="(DateTime.today() + relativedelta(days=14)).strftime('%Y-%m-%d')"/>
+        <field name="due_odometer_km">25000</field>
+        <field name="diagnosis">Registro ficticio de demostración.</field>
+    </record>
+    <record id="maintenance_demo_reactive" model="bomberos.maintenance.order">
+        <field name="name">DEMO-MT-00002</field>
+        <field name="maintenance_type">reactive</field>
+        <field name="vehicle_id" ref="bomberos_fleet.vehicle_demo_02"/>
+        <field name="state">in_progress</field>
+        <field name="scheduled_date" eval="(DateTime.today() - relativedelta(days=1)).strftime('%Y-%m-%d')"/>
+        <field name="failure_description">Falla ficticia para demostración.</field>
+        <field name="work_description">Diagnóstico y reparación ficticios para demostrar el flujo.</field>
+        <field name="started_at" eval="DateTime.now()"/>
+        <field name="work_description">Trabajo ficticio actualmente en ejecución.</field>
+        <field name="diagnosis">Registro ficticio de demostración.</field>
+        <field name="material_line_ids" eval="[(0, 0, {'description': 'Repuesto DEMO', 'quantity': 1, 'unit': 'unidad', 'unit_cost': 10000})]"/>
+        <field name="labor_line_ids" eval="[(0, 0, {'description': 'Trabajo DEMO', 'hours': 2, 'hourly_rate': 8000})]"/>
+    </record>
+</odoo>

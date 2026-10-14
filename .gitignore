@@ -15,5 +15,14 @@ Icon?
 Thumbs.db
 desktop.ini
 
+# Entorno virtual de Odoo
+Software/.venv/
+Software/.venv312/
+Software/odoo.conf
+
+# Archivos generados por Python
+__pycache__/
+*.py[cod]
+
 # Borradores de trabajo (no se publican en el repositorio)
 BORRADOR_*.md

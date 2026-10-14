@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_partners_form_report_sign" model="ir.ui.view">
+        <field name="name">view.res.partner.form.report.sign</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="Signature for Report" name="report_signature">
+                    <field name="report_signature" widget="signature" readonly="0"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo> 

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bomberos_vehicle_consultant,Vehicle consultant,model_bomberos_vehicle,bomberos_base.group_bomberos_consultant,1,0,0,0
+access_bomberos_vehicle_technician,Vehicle technician,model_bomberos_vehicle,bomberos_base.group_bomberos_technician,1,0,0,0
+access_bomberos_vehicle_manager,Vehicle manager,model_bomberos_vehicle,bomberos_base.group_bomberos_fleet_manager,1,1,1,1
+access_bomberos_odometer_consultant,Odometer consultant,model_bomberos_vehicle_odometer,bomberos_base.group_bomberos_consultant,1,0,0,0
+access_bomberos_odometer_technician,Odometer technician,model_bomberos_vehicle_odometer,bomberos_base.group_bomberos_technician,1,1,1,0
+access_bomberos_odometer_manager,Odometer manager,model_bomberos_vehicle_odometer,bomberos_base.group_bomberos_fleet_manager,1,1,1,1

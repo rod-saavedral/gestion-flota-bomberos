@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form_bomberos_companies" model="ir.ui.view">
+        <field name="name">res.users.form.bomberos.companies</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Bomberos" name="bomberos_companies" groups="base.group_system">
+                    <group>
+                        <field name="bomberos_company_ids" widget="many2many_tags"/>
+                    </group>
+                    <p class="text-muted">
+                        El rol de aplicación se asigna en la sección de permisos del usuario.
+                    </p>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

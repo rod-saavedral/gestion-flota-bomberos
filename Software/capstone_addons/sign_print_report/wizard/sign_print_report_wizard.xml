@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sign_print_report_wizard_view_form" model="ir.ui.view">
+        <field name="name">sign.print.report.wizard.form</field>
+        <field name="model">sign.print.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Sign Print Report">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="report_template" required="1" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="report_template_ids" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Sign" class="btn-primary" name="action_sign_print_report" type="object" data-hotkey="v"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+           </form>
+        </field>
+    </record>
+
+    <record id="sign_print_report_wizard_action" model="ir.actions.act_window">
+        <field name="name">Sign Print Report</field>
+        <field name="res_model">sign.print.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sign_print_report_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

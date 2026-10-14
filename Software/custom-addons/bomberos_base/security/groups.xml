@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_bomberos" model="ir.module.category">
+        <field name="name">Gestión de Bomberos</field>
+        <field name="sequence">30</field>
+    </record>
+
+    <record id="group_bomberos_consultant" model="res.groups">
+        <field name="name">Bombero consultor</field>
+        <field name="category_id" ref="module_category_bomberos"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_bomberos_technician" model="res.groups">
+        <field name="name">Técnico de mantención</field>
+        <field name="category_id" ref="module_category_bomberos"/>
+        <field name="implied_ids" eval="[(4, ref('group_bomberos_consultant'))]"/>
+    </record>
+
+    <record id="group_bomberos_fleet_manager" model="res.groups">
+        <field name="name">Jefe de flota</field>
+        <field name="category_id" ref="module_category_bomberos"/>
+        <field name="implied_ids" eval="[(4, ref('group_bomberos_technician'))]"/>
+    </record>
+
+    <record id="group_bomberos_admin" model="res.groups">
+        <field name="name">Administrador de Bomberos</field>
+        <field name="category_id" ref="module_category_bomberos"/>
+        <field name="implied_ids" eval="[(4, ref('group_bomberos_fleet_manager'))]"/>
+    </record>
+</odoo>

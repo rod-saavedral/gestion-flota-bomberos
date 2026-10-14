@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+    <t t-name="sign_print_report.SignPrintReportSelection" id="SignPrintReportSelection" >
+        <Dialog size="'md'" title="'Select Sign Report'">
+            <div class="container-fluid">
+                <div class="row">
+                    <form role="form">
+                        <div class="form-group mb0">
+                            <div class="col-sm-12 file_type">
+                                <label>
+                                    <input type="checkbox" name="SelectReport" value="select_report" t-ref="is_select_report" t-on-click="onSelectReportCheck"/> Select Report
+                                </label>
+                                <label class="ml16">
+                                    <input type="checkbox" name="UploadFile" value="upload_file" t-ref="is_upload_file" t-on-click="onUploadFileCheck"/> Upload File
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group mb0" id="select_report" style="display: none;"  t-ref="select_report_container">
+                            <label for="reports" class="col-sm-12 col-form-label">From the dropdown menu, choose Print Report.</label>
+                            <div class="col-sm-12">
+                                <select id="report" name="report" placeholder="report" class="mt4 form-control companies" t-ref="selected_report">
+                                    <t t-foreach="props.reportData" t-as="report" t-key="report.id">
+                                        <option t-att-value='report.id' t-att-report_name="report.report_name"><t t-esc='report.name'/></option>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group mb0" id="upload_file" style="display: none;" t-ref="upload_file_container">
+                            <label for="reports" class="col-sm-12 col-form-label">Upload a PDF file from your computer's local storage.</label>
+                            <div class="col-sm-12">
+                                <button class="btn btn-secondary pdf_add_new mr-2"
+                                    aria-label="Upload file"
+                                    title="Upload file" t-on-click="onClickUploadFile">
+                                    <span>Upload File</span>
+                                </button>
+                                <span class="pdf_add_new_name ml16" t-ref="new_uploaded_file_name"></span>
+                            </div>
+                        </div>                
+                    </form>
+                </div>
+            </div>
+             <t t-set-slot="footer">
+                <button class="btn btn-primary" t-ref="sign_button" t-on-click="onClickConfirm" >Sign</button>
+                <button class="btn btn-secondary" t-on-click="props.close">Cancel</button>
+            </t>
+        </Dialog>
+    </t>
+</template>

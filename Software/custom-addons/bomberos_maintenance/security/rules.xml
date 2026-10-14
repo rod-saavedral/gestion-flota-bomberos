@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_bomberos_maintenance_assigned" model="ir.rule">
+        <field name="name">Mantenciones de compañías asignadas</field>
+        <field name="model_id" ref="model_bomberos_maintenance_order"/>
+        <field name="domain_force">[('company_id', 'in', user.bomberos_company_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_consultant'))]"/>
+    </record>
+    <record id="rule_bomberos_maintenance_manager_all" model="ir.rule">
+        <field name="name">Jefatura accede a todas las mantenciones</field>
+        <field name="model_id" ref="model_bomberos_maintenance_order"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_fleet_manager'))]"/>
+    </record>
+    <record id="rule_bomberos_material_assigned" model="ir.rule">
+        <field name="name">Materiales de compañías asignadas</field>
+        <field name="model_id" ref="model_bomberos_maintenance_material"/>
+        <field name="domain_force">[('company_id', 'in', user.bomberos_company_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_consultant'))]"/>
+    </record>
+    <record id="rule_bomberos_material_manager_all" model="ir.rule">
+        <field name="name">Jefatura accede a todos los materiales</field>
+        <field name="model_id" ref="model_bomberos_maintenance_material"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_fleet_manager'))]"/>
+    </record>
+    <record id="rule_bomberos_labor_assigned" model="ir.rule">
+        <field name="name">Mano de obra de compañías asignadas</field>
+        <field name="model_id" ref="model_bomberos_maintenance_labor"/>
+        <field name="domain_force">[('company_id', 'in', user.bomberos_company_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_consultant'))]"/>
+    </record>
+    <record id="rule_bomberos_labor_manager_all" model="ir.rule">
+        <field name="name">Jefatura accede a toda la mano de obra</field>
+        <field name="model_id" ref="model_bomberos_maintenance_labor"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_fleet_manager'))]"/>
+    </record>
+    <record id="rule_bomberos_alert_assigned" model="ir.rule">
+        <field name="name">Avisos de compañías asignadas</field>
+        <field name="model_id" ref="model_bomberos_maintenance_alert"/>
+        <field name="domain_force">[('company_id', 'in', user.bomberos_company_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_consultant'))]"/>
+    </record>
+    <record id="rule_bomberos_alert_manager_all" model="ir.rule">
+        <field name="name">Jefatura accede a todos los avisos</field>
+        <field name="model_id" ref="model_bomberos_maintenance_alert"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_fleet_manager'))]"/>
+    </record>
+</odoo>
