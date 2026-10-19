@@ -1,0 +1,106 @@
+erDiagram
+    direction TB
+    bomberos_company {
+        integer id PK
+        varchar name
+        varchar code UK
+        integer currency_id FK
+        boolean active
+    }
+    res_users {
+        integer id PK
+        varchar login
+    }
+    res_currency {
+        integer id PK
+        varchar name
+    }
+    bomberos_company_user_rel {
+        integer company_id PK,FK
+        integer user_id PK,FK
+    }
+    bomberos_vehicle {
+        integer id PK
+        integer company_id FK
+        varchar name
+        varchar code
+        varchar license_plate
+        varchar vehicle_type
+        varchar operational_state
+        numeric current_odometer_km
+    }
+    bomberos_vehicle_odometer {
+        integer id PK
+        integer vehicle_id FK
+        integer company_id FK "derivada almacenada"
+        integer user_id FK
+        date date
+        numeric km
+    }
+    ir_attachment {
+        integer id PK
+        varchar name
+    }
+    bomberos_vehicle_attachment_rel {
+        integer vehicle_id PK,FK
+        integer attachment_id PK,FK
+    }
+    bomberos_maintenance_order {
+        integer id PK
+        integer vehicle_id FK
+        integer company_id FK "derivada almacenada"
+        integer created_by FK
+        integer reviewer_id FK
+        varchar name
+        varchar maintenance_type
+        varchar state
+        date scheduled_date
+        numeric total_cost "calculado almacenado"
+    }
+    bomberos_maintenance_material {
+        integer id PK
+        integer order_id FK
+        integer company_id FK "derivada almacenada"
+        varchar description
+        numeric quantity
+        numeric unit_cost
+        numeric subtotal "calculado almacenado"
+    }
+    bomberos_maintenance_labor {
+        integer id PK
+        integer order_id FK
+        integer company_id FK "derivada almacenada"
+        varchar description
+        numeric hours
+        numeric hourly_rate
+        numeric subtotal "calculado almacenado"
+    }
+    bomberos_maintenance_alert {
+        integer id PK
+        integer maintenance_id FK
+        integer company_id FK "derivada almacenada"
+        integer acknowledged_by FK
+        varchar alert_type
+        boolean active
+        boolean acknowledged
+    }
+    res_currency ||--o{ bomberos_company : currency_id
+    bomberos_company ||--o{ bomberos_company_user_rel : company_id
+    res_users ||--o{ bomberos_company_user_rel : user_id
+    bomberos_company ||--o{ bomberos_vehicle : company_id
+    bomberos_vehicle ||--o{ bomberos_vehicle_odometer : vehicle_id
+    res_users |o--o{ bomberos_vehicle_odometer : user_id
+    bomberos_vehicle ||--o{ bomberos_vehicle_attachment_rel : vehicle_id
+    ir_attachment ||--o{ bomberos_vehicle_attachment_rel : attachment_id
+    bomberos_vehicle ||--o{ bomberos_maintenance_order : vehicle_id
+    res_users |o--o{ bomberos_maintenance_order : created_by
+    res_users |o--o{ bomberos_maintenance_order : reviewer_id
+    bomberos_maintenance_order ||--o{ bomberos_maintenance_material : order_id
+    bomberos_maintenance_order ||--o{ bomberos_maintenance_labor : order_id
+    bomberos_maintenance_order ||--o{ bomberos_maintenance_alert : maintenance_id
+    res_users |o--o{ bomberos_maintenance_alert : acknowledged_by
+    bomberos_company |o..o{ bomberos_vehicle_odometer : company_id_derivada
+    bomberos_company |o..o{ bomberos_maintenance_order : company_id_derivada
+    bomberos_company |o..o{ bomberos_maintenance_material : company_id_derivada
+    bomberos_company |o..o{ bomberos_maintenance_labor : company_id_derivada
+    bomberos_company |o..o{ bomberos_maintenance_alert : company_id_derivada
