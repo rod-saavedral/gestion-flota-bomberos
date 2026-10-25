@@ -103,15 +103,15 @@ Actualmente la información sobre el estado y las mantenciones de los vehículos
 
 | ID | Categoría | Requisito | Cómo se aborda | Verificación |
 |---|---|---|---|---|
-| RNF-01 | **Seguridad – control de acceso** | Cada usuario accede solo a los datos de sus compañías asignadas, según 4 perfiles jerárquicos. | Grupos de seguridad, `ir.model.access.csv` y reglas de registro (`rules.xml`) por compañía. | ✅ UT-01, UT-02, UT-04, UT-05 aprobadas. |
-| RNF-02 | **Seguridad – autorización de acciones** | Solo Jefe de flota/Administrador puede cerrar o cancelar órdenes. | Validación en la lógica del modelo de órdenes. | ✅ UT-07 aprobada. |
-| RNF-03 | **Seguridad – configuración y transporte** | Sin credenciales en el repositorio; acceso externo solo por HTTPS. | `odoo.conf` y entorno virtual excluidos en `.gitignore`; despliegue tras proxy HTTPS, usuarios con mínimo privilegio. | ✅ `.gitignore` vigente · ⏳ HTTPS en implantación (Fase 3). |
-| RNF-04 | **Integridad y trazabilidad** | Los registros cerrados no se alteran; el kilometraje nunca disminuye; se registra quién revisó y cuándo. | Bloqueo de edición en estados En revisión/Cerrada/Cancelada; restricciones ORM; campos de revisor y fecha. | ✅ UT-03, UT-08, UT-09 aprobadas. |
-| RNF-05 | **Rendimiento** | Navegación fluida de listas, fichas y reportes con la flota de Talcahuano; el cálculo de avisos no debe afectar la operación diaria. | Costos almacenados (campos calculados con `store`), índices de PostgreSQL vía ORM, avisos calculados por cron diario fuera de la interacción del usuario y sin duplicados. | ✅ UT-06 (no duplicidad) · ⏳ Medición de tiempos de respuesta en QA. |
+| RNF-01 | **Seguridad – control de acceso** | Cada usuario accede solo a los datos de sus compañías asignadas, según 4 perfiles jerárquicos. | Grupos de seguridad, `ir.model.access.csv` y reglas de registro (`rules.xml`) por compañía. |  UT-01, UT-02, UT-04, UT-05 aprobadas. |
+| RNF-02 | **Seguridad – autorización de acciones** | Solo Jefe de flota/Administrador puede cerrar o cancelar órdenes. | Validación en la lógica del modelo de órdenes. |  UT-07 aprobada. |
+| RNF-03 | **Seguridad – configuración y transporte** | Sin credenciales en el repositorio; acceso externo solo por HTTPS. | `odoo.conf` y entorno virtual excluidos en `.gitignore`; despliegue tras proxy HTTPS, usuarios con mínimo privilegio. |  `.gitignore` vigente · ⏳ HTTPS en implantación (Fase 3). |
+| RNF-04 | **Integridad y trazabilidad** | Los registros cerrados no se alteran; el kilometraje nunca disminuye; se registra quién revisó y cuándo. | Bloqueo de edición en estados En revisión/Cerrada/Cancelada; restricciones ORM; campos de revisor y fecha. |  UT-03, UT-08, UT-09 aprobadas. |
+| RNF-05 | **Rendimiento** | Navegación fluida de listas, fichas y reportes con la flota de Talcahuano; el cálculo de avisos no debe afectar la operación diaria. | Costos almacenados (campos calculados con `store`), índices de PostgreSQL vía ORM, avisos calculados por cron diario fuera de la interacción del usuario y sin duplicados. |  UT-06 (no duplicidad) · ⏳ Medición de tiempos de respuesta en QA. |
 | RNF-06 | **Disponibilidad** | Sistema accesible vía web/PWA durante la operación; requiere conexión a Internet. | Servidor Odoo + PostgreSQL centralizado; política de respaldos de la base de datos definida para implantación. | ⏳ Se validará en el ambiente de implantación (Fase 3). |
 | RNF-07 | **Usabilidad / responsive** | Interfaz usable desde escritorio y teléfono, en español, con menús según perfil. | Cliente web responsive de Odoo y PWA instalable; menús *Bomberos → Flota / Mantenciones*. | ⏳ QA-01 y QA-09 (PWA en dispositivo real) pendientes. |
-| RNF-08 | **Mantenibilidad / modularidad** | Funcionalidad separada en módulos independientes, sin modificar el núcleo de Odoo. | Tres addons con dependencias explícitas (`base → fleet → maintenance`), pruebas por addon. | ✅ Verificado: el core de Odoo no se edita. |
-| RNF-09 | **Portabilidad** | Ejecutable en macOS, Linux o Windows con Python 3.12 y PostgreSQL. | Dependencias estándar de Odoo 18; configuración local por archivo. | ✅ Ejecutado en ambiente local de desarrollo. |
+| RNF-08 | **Mantenibilidad / modularidad** | Funcionalidad separada en módulos independientes, sin modificar el núcleo de Odoo. | Tres addons con dependencias explícitas (`base → fleet → maintenance`), pruebas por addon. |  Verificado: el core de Odoo no se edita. |
+| RNF-09 | **Portabilidad** | Ejecutable en macOS, Linux o Windows con Python 3.12 y PostgreSQL. | Dependencias estándar de Odoo 18; configuración local por archivo. |  Ejecutado en ambiente local de desarrollo. |
 | RNF-10 | **Respaldo y recuperación** | Respaldar la base antes de instalar/actualizar módulos y periódicamente en producción. | Procedimiento descrito en la guía de instalación; datos DEMO con prefijo para no confundirlos con datos reales. | ⏳ Plan de respaldo a formalizar en implantación. |
 
 ---
@@ -274,7 +274,7 @@ python odoo-18.0/odoo-bin -c odoo.conf -d capstone_test -i bomberos_maintenance 
 
 El detalle de tareas por integrante, reunión y fecha está en el **[Registro de reuniones y tareas del equipo](<Fase 2/Evidencias Proyecto/Evidencia de documentación/07_Evidencia_de_reuniones.docx>)**.
 
-> **Estado del registro de reuniones:** borrador reconstruido y **pendiente de validación** por los tres integrantes. Los commits y documentos citados son verificables. La fecha exacta, el horario, la modalidad, la asistencia y los acuerdos de cada reunión deben confirmarse y firmarse en el propio documento antes de considerarlo un acta oficial.
+> **Registro de gestión:** contiene 19 reuniones de las Fases 1 y 2, con fechas confirmadas por Rodrigo Saavedra, acuerdos, tareas por rol y trazabilidad de entregas. Los commits y documentos citados respaldan los entregables; la confirmación de las reuniones se registra por separado en el documento.
 
 ---
 
@@ -283,7 +283,7 @@ El detalle de tareas por integrante, reunión y fecha está en el **[Registro de
 Se utiliza **Scrum** (marco ágil), con un tablero Kanban para el seguimiento visual de tareas.
 
 - **Artefactos:** Product Backlog priorizado (valor, esfuerzo, riesgo y tiempo), Sprint Backlog, Scrumboard, Burndown Chart, Impediment Log, Definition of Done y criterios de aceptación por historia.
-- **Ceremonias:** Sprint Planning, reuniones de seguimiento cortas (15 min, dos veces por semana), Sprint Review y Sprint Retrospective. El [registro de reuniones](<Fase 2/Evidencias Proyecto/Evidencia de documentación/07_Evidencia_de_reuniones.docx>) reconstruye estas ceremonias y queda pendiente de validación por el equipo.
+- **Ceremonias:** Sprint Planning, reuniones de seguimiento cortas (15 min, dos veces por semana), Sprint Review y Sprint Retrospective. El [registro de reuniones](<Fase 2/Evidencias Proyecto/Evidencia de documentación/07_Evidencia_de_reuniones.docx>) presenta las sesiones registradas, sus acuerdos y el seguimiento de compromisos.
 - **Definition of Done:** historia implementada en un addon propio, cumple sus criterios de aceptación, pruebas automatizadas en verde, revisada por el Product Owner y documentada.
 - **Plantillas de seguimiento:** [06_Plantillas_de_evidencia.docx](<Fase 2/Evidencias Proyecto/Evidencia de documentación/06_Plantillas_de_evidencia.docx>).
 
@@ -291,12 +291,12 @@ Se utiliza **Scrum** (marco ágil), con un tablero Kanban para el seguimiento vi
 
 | Semanas | Fechas (2026) | Etapa | Lidera | Estado |
 |---|---|---|---|---|
-| S1 | 10-08 → 16-08 | Análisis del caso y mapa de actores | Rodrigo y Benjamin | ✅ Completado |
-| S2–S3 | 17-08 → 30-08 | Visión, historias de usuario, User Story Mapping y Product Backlog | Rodrigo y Benjamin | ✅ Completado |
-| S4–S5 | 31-08 → 13-09 | Cierre Fase 1 (Guía 1.5, presentación, formativa 1.4) | Equipo | ✅ Completado |
-| S6–S7 | 14-09 → 27-09 | Sprint 0 – Configuración Odoo/PostgreSQL/PWA (desplazado por cierre de Fase 1 y Fiestas Patrias) | Eddie | ✅ Completado |
-| S8 | 28-09 → 04-10 | Sprint 1 – Compañías, perfiles, vehículos, estados y kilometraje | Eddie | ✅ Completado |
-| S9–S10 | 05-10 → 18-10 | Sprint 2 – Mantenciones, flujo, recursos, costos y avisos · Informe de avance 2.5 (14-10) | Eddie | ✅ Completado |
+| S1 | 10-08 → 16-08 | Análisis del caso y mapa de actores | Rodrigo y Benjamin |  Completado |
+| S2–S3 | 17-08 → 30-08 | Visión, historias de usuario, User Story Mapping y Product Backlog | Rodrigo y Benjamin |  Completado |
+| S4–S5 | 31-08 → 13-09 | Cierre Fase 1 (Guía 1.5, presentación, formativa 1.4) | Equipo |  Completado |
+| S6–S7 | 14-09 → 27-09 | Sprint 0 – Configuración Odoo/PostgreSQL/PWA (desplazado por cierre de Fase 1 y Fiestas Patrias) | Eddie |  Completado |
+| S8 | 28-09 → 04-10 | Sprint 1 – Compañías, perfiles, vehículos, estados y kilometraje | Eddie |  Completado |
+| S9–S10 | 05-10 → 18-10 | Sprint 2 – Mantenciones, flujo, recursos, costos y avisos · Informe de avance 2.5 (14-10) | Eddie |  Completado |
 | S11–S13 | 19-10 → 08-11 | Sprint 3 – Reportes, carga DEMO reproducible, versionado de addons, README y evidencias | Eddie | 🔄 En curso |
 | S14–S16 | 09-11 → 29-11 | QA manual, integración, PWA en dispositivo real y mejoras | Rodrigo | ⏳ Planificado |
 | S17–S18 | 30-11 → 13-12 | Implantación, informe final, video demo y defensa | Benjamin | ⏳ Planificado |
@@ -313,7 +313,7 @@ Se utiliza **Scrum** (marco ágil), con un tablero Kanban para el seguimiento vi
 | [04_Instalacion_y_despliegue.docx](<Fase 2/Evidencias Proyecto/Evidencia de documentación/04_Instalacion_y_despliegue.docx>) | Guía de instalación/despliegue | Requisitos, ejecución local, instalación/actualización de addons, seguridad. |
 | [05_Plan_y_matriz_QA.docx](<Fase 2/Evidencias Proyecto/Evidencia de documentación/05_Plan_y_matriz_QA.docx>) | Plan de pruebas | UT-01…UT-09 (aprobadas) y casos manuales QA-01…QA-09. |
 | [06_Plantillas_de_evidencia.docx](<Fase 2/Evidencias Proyecto/Evidencia de documentación/06_Plantillas_de_evidencia.docx>) | Plantillas Scrum | Backlog, Sprint Backlog, Scrumboard, Burndown, Impediment Log, Review/Retro, incidencias QA. |
-| [07_Evidencia_de_reuniones.docx](<Fase 2/Evidencias Proyecto/Evidencia de documentación/07_Evidencia_de_reuniones.docx>) | Registro de reuniones y tareas | Reuniones reconstruidas (pendientes de validación), acuerdos y tareas por integrante, con trazabilidad a commits. |
+| [07_Evidencia_de_reuniones.docx](<Fase 2/Evidencias Proyecto/Evidencia de documentación/07_Evidencia_de_reuniones.docx>) | Registro de reuniones y tareas | 19 actas, calendario, acuerdos, decisiones, tareas por integrante y trazabilidad de entregas a commits. |
 | [Informe_modelo_datos_Bomberos.md](<Fase 2/Evidencias Proyecto/Evidencias de sistema Aplicación de base de datos/Informe_modelo_datos_Bomberos.md>) ([PDF](<Fase 2/Evidencias Proyecto/Evidencias de sistema Aplicación de base de datos/Informe_modelo_datos_Bomberos.pdf>)) | Informe técnico BD | Análisis del modelo relacional implementado en PostgreSQL. |
 | [§5 de este README](#5-requisitos-no-funcionales-rnf) | RNF | Rendimiento, seguridad, disponibilidad, usabilidad, mantenibilidad, portabilidad, integridad y respaldo. |
 
@@ -358,7 +358,7 @@ gestion-flota-bomberos/
 | Individual | [Rodrigo – 2.1 Diario](<Fase 2/Evidencias Individuales/Saavedra_Lara_Rodrigo_Antonio_2.1_APT122_DiarioReflexionFase2.docx>) · [Benjamin – 2.1 Diario](<Fase 2/Evidencias Individuales/Morales_Barriga_Benjamin_Isaac_2.1_APT122_DiarioReflexionFase2.docx>) · [Eddie – 2.1 Diario](<Fase 2/Evidencias Individuales/Cerpa_Navarro_Eddie_Jesus_2.1_APT122_DiarioReflexionFase2.docx>) | Diarios de reflexión de Fase 2. |
 | Proyecto | [Presentacion Proyecto.pptx](<Fase 2/Evidencias Proyecto/Presentacion Proyecto.pptx>) | Presentación/mockup del prototipo. |
 | Proyecto – Documentación | [Evidencia de documentación/](<Fase 2/Evidencias Proyecto/Evidencia de documentación>) | Documentos 01–06 (ver [§11](#11-documentación-técnica-manuales-y-guías)) y diagramas de arquitectura, modelo de datos y flujo. |
-| **Proyecto – Reuniones** | **[07_Evidencia_de_reuniones.docx](<Fase 2/Evidencias Proyecto/Evidencia de documentación/07_Evidencia_de_reuniones.docx>)** | **Registro de reuniones (agosto–octubre 2026), acuerdos, decisiones, impedimentos y tareas por integrante según su rol, con trazabilidad a los commits. Borrador reconstruido, pendiente de validación y firma del equipo.** |
+| **Proyecto – Reuniones** | **[07_Evidencia_de_reuniones.docx](<Fase 2/Evidencias Proyecto/Evidencia de documentación/07_Evidencia_de_reuniones.docx>)** | **Registro de 19 reuniones (agosto–octubre 2026), acuerdos, decisiones, impedimentos y tareas por integrante según su rol. Incluye fechas confirmadas por Rodrigo Saavedra y trazabilidad documental de entregas.** |
 | Proyecto – Base de datos | [Evidencias de sistema Aplicación de base de datos/](<Fase 2/Evidencias Proyecto/Evidencias de sistema Aplicación de base de datos>) | Esquema relacional (PNG/Mermaid) e informe del modelo de datos (MD/DOCX/PDF). |
 | Código fuente | Commit [`9a9b9153`](https://github.com/rod-saavedral/gestion-flota-bomberos/commit/9a9b9153) → `Software/custom-addons/` | Addons `bomberos_base`, `bomberos_fleet`, `bomberos_maintenance` con sus pruebas. |
 
