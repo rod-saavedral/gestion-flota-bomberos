@@ -1,2 +1,0 @@
-docxcompose==1.4.0
-docxtpl==0.16.4
