@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bomberos_company_list_vehicle_count" model="ir.ui.view">
+        <field name="name">bomberos.company.list.vehicle.count</field>
+        <field name="model">bomberos.company</field>
+        <field name="inherit_id" ref="bomberos_base.view_bomberos_company_list"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="vehicle_count"/>
+            </field>
+        </field>
+    </record>
+</odoo>

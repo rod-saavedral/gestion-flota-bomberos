@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_bomberos_fleet"
+              name="Flota"
+              parent="bomberos_base.menu_bomberos_root"
+              sequence="10"
+              groups="bomberos_base.group_bomberos_consultant"/>
+    <menuitem id="menu_bomberos_vehicles"
+              name="Vehículos"
+              parent="menu_bomberos_fleet"
+              action="action_bomberos_vehicle"
+              sequence="10"
+              groups="bomberos_base.group_bomberos_consultant"/>
+    <menuitem id="menu_bomberos_odometer"
+              name="Lecturas de kilometraje"
+              parent="menu_bomberos_fleet"
+              action="action_bomberos_odometer"
+              sequence="20"
+              groups="bomberos_base.group_bomberos_technician"/>
+</odoo>

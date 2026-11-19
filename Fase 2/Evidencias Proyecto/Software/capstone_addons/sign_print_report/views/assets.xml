@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_pdf_iframe" name="assets pdf js">
+        <t t-call-assets="sign_print_report.assets_pdf_iframe"/>
+    </template>
+</odoo>

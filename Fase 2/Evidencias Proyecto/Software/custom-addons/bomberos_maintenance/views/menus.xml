@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_bomberos_maintenance"
+              name="Mantenciones"
+              parent="bomberos_base.menu_bomberos_root"
+              sequence="20"
+              groups="bomberos_base.group_bomberos_consultant"/>
+    <menuitem id="menu_bomberos_maintenance_orders"
+              name="Órdenes de mantención"
+              parent="menu_bomberos_maintenance"
+              action="action_bomberos_maintenance"
+              sequence="10"
+              groups="bomberos_base.group_bomberos_consultant"/>
+    <menuitem id="menu_bomberos_maintenance_alerts"
+              name="Avisos"
+              parent="menu_bomberos_maintenance"
+              action="action_bomberos_alerts"
+              sequence="20"
+              groups="bomberos_base.group_bomberos_consultant"/>
+    <menuitem id="menu_bomberos_maintenance_reports"
+              name="Reportes"
+              parent="menu_bomberos_maintenance"
+              action="action_bomberos_maintenance_reports"
+              sequence="30"
+              groups="bomberos_base.group_bomberos_fleet_manager"/>
+</odoo>

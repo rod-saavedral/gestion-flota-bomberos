@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+    <t t-name="sign_print_report.SignPrintReportAction">        
+        <div class="">
+            <div class="sign_report">
+                <div class="sign_report_top_bar">
+                    <span class="sign_report_topbar_buttons_left">
+                        <button class="btn btn-primary sign_print_report mr-2"
+                            aria-label="Merge files"
+                            title="Merge files" 
+                            t-on-click.prevent="onClickSign">
+                            <span>Sign Report</span>
+                        </button>
+                    </span>
+                    <span class="sign_report_topbar_buttons_right">                        
+                        <button class="btn btn-danger mr-2 text-uppercase sign_report_close"                            
+                            aria-label="Discard"
+                            title="Discard" 
+                            t-on-click.prevent="onClickClose">
+                            <span>Discard</span>
+                        </button>
+                    </span>
+                </div>                
+                <div class="sign_report_viewer">
+                    <div class="sign_report_page_wrapper" id="sign_report_page_wrapper">
+                        <div class="alert alert-danger alert-dismissible col-12 mb-0 text-center" t-ref="error">
+                            You'll need a valid PDF in order to add signature fields. Please return and choose a valid PDF report.
+                        </div>
+                        <iframe class="sign_pdf_iframe" t-ref="iframe">                            
+                        </iframe>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </t>
+    <t t-name="sign_print_report.drag_and_drop_buttons">
+        <div class="o_sign_drop_type_toolbar_title align-items-center d-flex justify-content-center">Sign Items</div>
+
+        <button type="button" data-type="signature" class="o_sign_drop_type_button btn btn-primary flex-shrink-0" title="Name">
+            Signature
+        </button>
+
+        <button type="button" data-type="name" class="o_sign_drop_type_button btn btn-primary flex-shrink-0" title="Name">
+            Name
+        </button>
+
+        <button type="button" data-type="email"  class="o_sign_drop_type_button btn btn-primary flex-shrink-0" title="Name">
+            Email
+        </button>
+
+        <button type="button" data-type="phone" class="o_sign_drop_type_button btn btn-primary flex-shrink-0" title="Phone">
+            Phone
+        </button>
+
+        <button type="button" data-type="company" class="o_sign_drop_type_button btn btn-primary flex-shrink-0" title="Name">
+            Company
+        </button>
+
+        <button type="button" data-type="date" class="o_sign_drop_type_button btn btn-primary flex-shrink-0" title="Name">
+            Date
+        </button>
+
+        <button type="button" data-type="website" class="o_sign_drop_type_button btn btn-primary flex-shrink-0" title="Name">
+            Website
+        </button>
+    </t>
+    <t t-name="sign_print_report.drag_and_drop_blocks">
+        <div class="sign_block_item">
+            <span class="fa fa-arrows pull-left" role="img"/>
+            <span class="fa fa-trash pull-right" role="img"/>
+            <div class="sign_block_item_controls" t-att-id="value">
+                <div class="sign_text">
+                    <t t-if="type == 'name'" >
+                        <t t-if="data.name">
+                            <t t-esc="data.name"/>
+                        </t>
+                        <t t-else="">
+                            <span>Name</span>
+                        </t>
+                    </t>
+                    <t t-if="type == 'email'" >
+                        <t t-if="data.email">
+                            <t t-esc="data.email"/>
+                        </t>
+                        <t t-else="">
+                            <span>Email</span>
+                        </t>
+                    </t>
+                    <t t-if="type == 'phone'" >
+                        <t t-if="data.phone">
+                            <t t-esc="data.phone"/>
+                        </t>
+                        <t t-else="">
+                            <span>Phone</span>
+                        </t>
+                    </t>
+                    <t t-if="type == 'website'" >
+                        <t t-if="data.website">
+                            <t t-esc="data.website"/>
+                        </t>
+                        <t t-else="">
+                            <span>Website</span>
+                        </t>
+                    </t>
+                    <t t-if="type == 'company'" >
+                        <t t-if="data.company">
+                            <t t-esc="data.company"/>
+                        </t>
+                        <t t-else="">
+                            <span>Company</span>
+                        </t>
+                    </t>
+                    <t t-if="type == 'date'" >
+                        <t t-if="data.date">
+                            <t t-esc="data.date"/>
+                        </t>
+                        <t t-else="">
+                            <span>Date</span>
+                        </t>
+                    </t>
+
+                    <t t-if="type == 'signature'" >
+                        <t t-if="data.signature">
+                            <img t-att-src="data.signature" draggable="false"  alt="Signature" style="width: 100%; heigth: 100%"/>
+                        </t>
+                        <t t-else="">
+                            <span>Signature</span>
+                        </t>
+                    </t>                    
+                </div>               
+            </div>
+        </div>
+    </t>
+</template>

@@ -1,0 +1,14 @@
+.sign_pdf_iframe {
+	min-height: 0;
+	border: none;
+	display: block;
+	flex: 0 1 100%;
+	width: 100%;
+	height: 100%;
+}
+.underline-on-hover:hover {
+    text-decoration: underline;
+}
+.highlight_alert {
+	border: 1px #f44336 solid;
+}

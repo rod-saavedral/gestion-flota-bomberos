@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bomberos_company_consultant,Company consultant,model_bomberos_company,bomberos_base.group_bomberos_consultant,1,0,0,0
+access_bomberos_company_manager,Company manager,model_bomberos_company,bomberos_base.group_bomberos_fleet_manager,1,1,1,1

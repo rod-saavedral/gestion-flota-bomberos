@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_bomberos_root"
+              name="Bomberos"
+              sequence="20"
+              groups="bomberos_base.group_bomberos_consultant"/>
+    <menuitem id="menu_bomberos_configuration"
+              name="Configuración"
+              parent="menu_bomberos_root"
+              sequence="90"
+              groups="bomberos_base.group_bomberos_fleet_manager"/>
+    <menuitem id="menu_bomberos_companies"
+              name="Compañías"
+              parent="menu_bomberos_configuration"
+              action="action_bomberos_company"
+              sequence="10"
+              groups="bomberos_base.group_bomberos_fleet_manager"/>
+</odoo>

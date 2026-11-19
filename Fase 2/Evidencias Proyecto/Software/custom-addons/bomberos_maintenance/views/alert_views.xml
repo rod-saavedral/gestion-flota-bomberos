@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bomberos_alert_search" model="ir.ui.view">
+        <field name="name">bomberos.maintenance.alert.search</field>
+        <field name="model">bomberos.maintenance.alert</field>
+        <field name="arch" type="xml">
+            <search string="Buscar avisos">
+                <field name="maintenance_id"/>
+                <field name="company_id"/>
+                <field name="alert_type"/>
+                <filter name="active_alerts" string="Activos" domain="[('active', '=', True)]"/>
+                <filter name="unread_alerts" string="Sin revisar"
+                        domain="[('active', '=', True), ('acknowledged', '=', False)]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_alert_type" string="Tipo" context="{'group_by': 'alert_type'}"/>
+                    <filter name="group_company" string="Compañía" context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="view_bomberos_alert_list" model="ir.ui.view">
+        <field name="name">bomberos.maintenance.alert.list</field>
+        <field name="model">bomberos.maintenance.alert</field>
+        <field name="arch" type="xml">
+            <list string="Avisos de mantención" decoration-danger="alert_type == 'overdue'"
+                  decoration-warning="not acknowledged">
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="maintenance_id"/>
+                <field name="alert_type" widget="badge"/>
+                <field name="message"/>
+                <field name="acknowledged"/>
+                <field name="acknowledged_by"/>
+                <button name="action_acknowledge" type="object" string="Marcar revisado"
+                        icon="fa-check" invisible="acknowledged"
+                        groups="bomberos_base.group_bomberos_technician"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_bomberos_alert_form" model="ir.ui.view">
+        <field name="name">bomberos.maintenance.alert.form</field>
+        <field name="model">bomberos.maintenance.alert</field>
+        <field name="arch" type="xml">
+            <form string="Aviso de mantención">
+                <header>
+                    <button name="action_acknowledge" type="object" string="Marcar revisado"
+                            class="btn-primary" invisible="acknowledged"
+                            groups="bomberos_base.group_bomberos_technician"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="alert_type"/>
+                        <field name="maintenance_id"/>
+                        <field name="company_id"/>
+                        <field name="message"/>
+                        <field name="active"/>
+                        <field name="acknowledged"/>
+                        <field name="acknowledged_by"/>
+                        <field name="acknowledged_at"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_bomberos_alerts" model="ir.actions.act_window">
+        <field name="name">Avisos</field>
+        <field name="res_model">bomberos.maintenance.alert</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_bomberos_alert_search"/>
+        <field name="context">{'search_default_active_alerts': 1}</field>
+    </record>
+</odoo>

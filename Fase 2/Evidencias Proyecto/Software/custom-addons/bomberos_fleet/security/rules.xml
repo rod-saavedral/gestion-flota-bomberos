@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_bomberos_vehicle_assigned" model="ir.rule">
+        <field name="name">Vehículos de compañías asignadas</field>
+        <field name="model_id" ref="model_bomberos_vehicle"/>
+        <field name="domain_force">[('company_id', 'in', user.bomberos_company_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_consultant'))]"/>
+    </record>
+    <record id="rule_bomberos_vehicle_manager_all" model="ir.rule">
+        <field name="name">Jefatura accede a toda la flota</field>
+        <field name="model_id" ref="model_bomberos_vehicle"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_fleet_manager'))]"/>
+    </record>
+    <record id="rule_bomberos_odometer_assigned" model="ir.rule">
+        <field name="name">Lecturas de compañías asignadas</field>
+        <field name="model_id" ref="model_bomberos_vehicle_odometer"/>
+        <field name="domain_force">[('company_id', 'in', user.bomberos_company_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_consultant'))]"/>
+    </record>
+    <record id="rule_bomberos_odometer_manager_all" model="ir.rule">
+        <field name="name">Jefatura accede a todas las lecturas</field>
+        <field name="model_id" ref="model_bomberos_vehicle_odometer"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('bomberos_base.group_bomberos_fleet_manager'))]"/>
+    </record>
+</odoo>

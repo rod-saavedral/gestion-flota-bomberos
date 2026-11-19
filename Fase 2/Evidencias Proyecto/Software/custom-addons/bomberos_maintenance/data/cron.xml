@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_bomberos_refresh_alerts" model="ir.cron">
+        <field name="name">Bomberos: actualizar avisos de mantención</field>
+        <field name="model_id" ref="model_bomberos_maintenance_alert"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_refresh_alerts()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

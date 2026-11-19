@@ -16,9 +16,9 @@ Thumbs.db
 desktop.ini
 
 # Entorno virtual de Odoo
-Software/.venv/
-Software/.venv312/
-Software/odoo.conf
+**/Software/.venv/
+**/Software/.venv312/
+**/Software/odoo.conf
 
 # Archivos generados por Python
 __pycache__/

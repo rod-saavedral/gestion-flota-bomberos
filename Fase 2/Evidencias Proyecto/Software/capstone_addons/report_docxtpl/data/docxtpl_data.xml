@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="contact_information_report" model="docx.template">
+            <field name="name">Contact Information</field>
+            <field name="module">report_docxtpl</field>
+            <field name="docx_template_path">/reports/contact_template.docx</field>
+            <field name="format_output">pdf</field>
+            <field name="type">report</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="print_report_name">'Contact %s' % object.name</field>
+            <field name="merge_or_zip">merge</field>
+        </record>
+    </data>
+</odoo>

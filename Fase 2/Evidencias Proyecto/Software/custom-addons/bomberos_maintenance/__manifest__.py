@@ -1,0 +1,20 @@
+{
+    "name": "Bomberos - Mantenciones",
+    "summary": "Órdenes, costos y avisos de mantención de vehículos de emergencia",
+    "version": "18.0.1.0.0",
+    "category": "Operations",
+    "license": "LGPL-3",
+    "depends": ["bomberos_fleet"],
+    "data": [
+        "security/ir.model.access.csv",
+        "security/rules.xml",
+        "data/sequence.xml",
+        "data/cron.xml",
+        "views/maintenance_views.xml",
+        "views/alert_views.xml",
+        "views/menus.xml",
+    ],
+    "demo": ["demo/maintenance_demo.xml"],
+    "application": False,
+    "installable": True,
+}

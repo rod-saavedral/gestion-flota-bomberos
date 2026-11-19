@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vehicle_demo_01" model="bomberos.vehicle">
+        <field name="name">DEMO - Unidad B-01</field>
+        <field name="code">DEMO-B01</field>
+        <field name="license_plate">DEMO-001</field>
+        <field name="vehicle_type">pump</field>
+        <field name="company_id" ref="bomberos_base.company_demo_01"/>
+        <field name="make">Fabricante ficticio</field>
+        <field name="model_name">Modelo de demostración</field>
+        <field name="year">2022</field>
+    </record>
+    <record id="vehicle_demo_02" model="bomberos.vehicle">
+        <field name="name">DEMO - Unidad R-02</field>
+        <field name="code">DEMO-R02</field>
+        <field name="license_plate">DEMO-002</field>
+        <field name="vehicle_type">rescue</field>
+        <field name="company_id" ref="bomberos_base.company_demo_02"/>
+        <field name="operational_state">in_maintenance</field>
+        <field name="make">Fabricante ficticio</field>
+        <field name="model_name">Modelo de demostración</field>
+        <field name="year">2021</field>
+    </record>
+</odoo>

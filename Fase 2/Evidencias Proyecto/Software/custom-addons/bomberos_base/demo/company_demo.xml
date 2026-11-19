@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="company_demo_01" model="bomberos.company">
+        <field name="name">DEMO - Compañía Talcahuano 01</field>
+        <field name="code">DEMO-01</field>
+    </record>
+    <record id="company_demo_02" model="bomberos.company">
+        <field name="name">DEMO - Compañía Talcahuano 02</field>
+        <field name="code">DEMO-02</field>
+    </record>
+</odoo>
